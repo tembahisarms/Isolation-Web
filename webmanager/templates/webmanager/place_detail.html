@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/add-household-page.css' %}">
+{% endblock %}
+
+{% block title %}Isolation Web - {% if place %}Edit{% else %}Add{% endif %} Your Household{% endblock %}
+
+{% block content %} 
+<div id="household" class="sml-content">
+  <h1>Add your household</h1>
+  <p>
+    To add your household to the map, enter your household's name and your zip code in the fields below. Your household name is a unique identifier you can use to recognize your household on the map.
+  </p>
+
+  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+  <div class="form-group">
+    <input name="id" value="{{place.id}}" type="hidden"/>
+    {% csrf_token %}
+
+    <div class="flexbox">
+      <div style="flex: 2 1 auto;">
+        <label>
+          Household Name: {{ place.name }}
+        </label>
+      </div>
+      <div style="flex: 1 1 auto">      
+        <label>
+          Number of Household Members: {{ place.member_count }}
+        </label>
+      </div>
+    </div>
+  </div>
+<!--     <div class="add-members">
+      <h2>Household Members</h2> -->
+      {# for person in persons #}
+        {# person #}
+      {# endfor #}
+<!--     </div> -->
+
+</div>
+
+{% endblock %}

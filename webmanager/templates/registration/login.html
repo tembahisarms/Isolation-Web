@@ -1,0 +1,44 @@
+{% extends '../auth-base.html' %}
+{% load static %}
+
+{% block form %}
+<h1>Login</h1>
+<h2>
+  Don't have an account? <a href="{% url 'signup' %}"><strong>Create Account</strong></a>
+</h2>
+
+{% if form.errors %}
+  <div class="error">Your username and password didn't match. Please try again</div>
+{% else %}
+  {% if next %}
+    {% if user.is_authenticated %}
+      <div class="error">Your account doesn't have access to this page. To proceed, please login with an account that has access.</div>
+    {% else %}
+      <div class="error">Please login to see this page.</div>
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+
+<form method="post" action="{% url 'login' %}" id="sign-up-form">
+  {% csrf_token %}
+
+    <!--Email and Password inputs-->
+    <div class="form-group">
+      <label id="id_username">Email Address
+        <input type="text" name="username" class="form-control" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+      </label>
+    </div>
+    <div class="form-group">
+      <label id="id_password" for="password">Password
+        <input type="password" name="password" class="form-control" autocomplete="new-password" required="" id="id_password1">
+      </label>
+    </div>
+
+  {#  {{form.as_p}}  #}
+  <div class="form-group">
+    <button type="submit" class="button-sign-up">Login</button>
+    <input type="hidden" name="next" value="{% url 'home' %}">
+  </div>
+</form>
+{% endblock %}

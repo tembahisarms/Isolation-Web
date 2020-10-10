@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block stylesheet %}
+<!-- <link rel="stylesheet" type="text/css" href="{# static 'css/faq-page.css' #}"> -->
+{% endblock %}
+
+{% block title %}Isolation Web - FAQ{% endblock %}
+
+{% block content %}
+<div id="faq" class="sml-content">
+    <h1>Frequently Asked Questions</h1>
+<!--     <p>
+        <a href="{% url 'terms' %}">Terms of Service</a> | <a href="{% url 'privacy' %}">Privacy Policy</a>
+    </p> -->
+    <p>
+        <strong>What’s an example of how this works?</strong><br/>
+        Let’s say you live in a home with three other people - four total. 
+        <br/><br/>
+        Two of your roommates don’t come into contact with anyone else outside of the house. One roommate has a romantic partner who also has a roommate, but no other close contact. Your pod size is 6 people total, across 2 houses (Four in yours, two in another).
+        <br/><br/>
+        You want to add your best friend’s house to your web. What are the risks on each side? With each house participating in the Isolation Web, you can show to your friend a visual representation of the extent of your risk-related associations. Likewise, they can show to you their own associations. With this information, you can better judge whether to break isolation and come into contact, or perhaps see that the risk is greater than either of you would like. 
+        <br/><br/>
+        As networks of contact grow, it’s harder and harder to track and to visualize these networks - especially if they become two, three, or even four connections distant. Your best friend’s roommates might want to be able to see how big a Web they’re now in. Information is power, and we want to empower people to make more informed decisions about how they isolate or physically connect. 
+    <p>
+        <strong>How Do I Add My Household to the Map?</strong><br>
+        You can add yourself to the map using the sign up form. On the form, you’ll be given the option of including just yourself or multiple members of your household.
+    </p>
+    <p>
+        <strong>How Can Others Find Me on the Web?</strong><br>
+        Your email address can be used to locate your household once you’ve added it to the map. Anyone who knows your email address can locate your information, so please be certain you are comfortable with sharing it as associated with that email. If you do not want anyone with your email to be able to find you, we recommend creating a different email account to use for the isolation web which you can share directly with members of your community.   
+    </p>
+    <p>
+        <strong>Why Are Households Anonymized?</strong><br>
+        Households are automatically anonymized to protect those who don’t wish their information to be shared completely publicly. To find other households in your social network, you can add them by entering their email address.
+    </p>
+    <p>
+        <strong>Why Can’t People Find Me By Name or Via Social Media?</strong><br>
+        To protect people’s privacy, we decided to not allow a search by name feature. Only individuals who know the email address you used to sign up for the web can locate you. 
+    </p>
+    <p>
+        <strong>I’m A Developer or Designer With a Feature Request. Can I Help With This Project?</strong><br>
+        Yes! Please! This is an open source project and we welcome contributions and ideas. All of the code for the Isolation Web can be found on our Github <a href="https://github.com/tembahisarms/Isolation-Web">here</a>.
+    </p>    
+</div>
+
+{% endblock %}

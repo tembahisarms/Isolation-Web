@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/d3map.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/landing-page.css' %}">
+{% endblock %}
+
+{% block title %}Isolation Web{% endblock %}
+
+{% block content %}
+    <div id="d3-map">
+<!--         <div class="toggle-controls">
+            <button class="toggle-d3-map inactive-control">Map</button>
+            <button class="toggle-d3-cluster">Cluster</button>
+        </div> -->
+    </div>
+    <!--placeholder for D3 Map-->
+
+    <div class="content">
+        <div class="flexbox" style="padding-bottom: 20px">
+            <div class="col1of2">
+                <h1>Stay Informed</h1> 
+                <p>Know your risk when going out in your community or interacting with members of other households. The Isolation Web helps you and the members of your community stay informed about COVID-19’s potential impact on your neighborhood and social network by visualizing the data for you so you can make informed decisions about your social interactions.</p>
+                <p>We’ll only ask for the bare essentials to the visualization of the web - your email (so we can contact you); your zip code (so your connections can search for you); your name (or top-secret codename!); and your house’s codename (so your connections can identify you). And we won’t share this info with anyone else.
+                </p>
+                <div align="center"><a class="button" href="{% url 'signup' %}">Add Your Household</a></div>
+            </div>
+            <div class="col1of2">
+                <img src="{% static 'images/isolation-connect.png' %}" 
+                alt="Two people on their laptops connected by Internet" 
+                    width=772 height=418 style="width:100%; height: auto">
+            </div>
+        </div>
+
+        <div class="flexbox" style="align-items:center; padding-bottom: 20px;">
+            <div class="col1of">
+                <img src="{% static 'images/isolation-pandemic.png' %}" alt="The globe at a high degree temperature" 
+                    width=771 height=416 style="width:100%; height: auto">
+            </div>
+
+            <div class="col1of2">
+                <h1>Inform Others</h1>
+                <p>By adding your household to the web, you can share information about you and your household. You can share this information with friends, family, and other members of your community to encourage them to stay informed and make knowledge-based decisions to slow the spread of the pandemic such as wearing masks, washing hands frequently, and practicing social distancing.</p> 
+            </div>
+        </div>
+        
+        <div class="flexbox" style="padding-bottom: 20px; align-items:center">
+            <div class="col1of2">
+                <h1>Help Keep Each Other Safe</h1>
+                <p>During the COVID-19 health crisis, many find themselves torn between the need to be with loved ones, and the need to separate themselves in order to protect their community. In facing this new reality, we must question not just whether to isolate ourselves, but exactly how much. The Isolation Web hopes to empower people with information about that potential impact and to help them make informed decisions that align with their values.</p>
+                
+<!--                 <p style="text-align: center"><a href="{% url 'terms' %}">Terms of Service</a> | <a href="{% url 'privacy' %}">Privacy Policy</a></p> -->
+            </div>
+            <div class="col1of2">
+                <img src="{% static 'images/isolation-mask.png' %}" alt="Girl wearing a mask" 
+                    width=772 height=416 style="width:100%; height: auto">
+            </div>
+        </div>
+    </div>
+    
+    <div id="sign-up-banner" class="flexbox">
+        <a href="{% url 'signup' %}" class="lrg-button">Sign Up</a>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="{% static 'js/drawd3.js' %}"></script>
+{% endblock %}

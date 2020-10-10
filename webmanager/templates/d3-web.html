@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/d3map.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="drawer">
+<!--         <label class="switch">
+            <input type="checkbox">
+            <span id="slider-switch"></span>
+            <span class="slider-text" id="map">map</span>
+            <span class="slider-text" id="cluster">cluster</span>
+        </label>
+ -->
+        <div class="search-form">
+			<form id="js-searchForm" action="{% url 'search' %}">
+		        <label for="search">
+					<input type="search" id="search" name="search" placeholder="Search by email or zip">
+		        </label>
+		    </form>
+		    <div id="js-searchResults">
+			</div>
+		    <template id="search-result-template">
+				<div class="search-result">
+					<div class="search-result-item">
+						<h1 class="js-place_name"></h1>
+						<h2 class="js-member_count"></h2>
+						<h2 class="js-zip_code"></h2>
+					</div>
+				</div>
+			</template>
+	    </div>
+
+	    <!-- <button class="cta-button">Re-Center</button> -->
+	</div>
+
+    <div id="d3-map">
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="{% static 'js/drawd3.js' %}"></script>
+{% endblock %}

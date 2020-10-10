@@ -1,0 +1,145 @@
+@import "https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap";
+
+/* global */
+* {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+body,p,h1,h2,h3,h4,h5,h6,button,ul {
+  font-family: "Work Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+strong {
+  font-weight: 700;
+}
+
+.content { margin: 2% 15.20%; }
+.sml-content { margin: 60px 31.6%; }
+
+p,
+ul {margin-bottom: 1em;
+  line-height: 1.3em;}
+
+.flexbox { display: flex; }
+.col1of2 { flex: 1 0 50%; }
+
+a, a:active, a:visited { color:#1DC5E9; }
+nav a, nav a:active, nav a:visited { color:#000; text-decoration: none;}
+
+a:hover {text-decoration: none;}
+
+button, .button, input[type='submit'] {
+    display: inline-block;
+    
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    color: #FFF !important;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    padding: 10px;
+
+    background: linear-gradient(45deg, #1DC5E9, #1DE0C4);
+
+    border: transparent;
+    border-radius: 10px;
+}
+
+button.lrg-button, .lrg-button, input[type='submit'].lrg-button {
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  color: #FFF !important;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  padding: 20px 50px;
+  display: inline-block;
+
+  background: linear-gradient(45deg, #1DC5E9, #1DE0C4);
+
+  border: transparent;
+  border-radius: 10px;
+}
+
+h1 { font-size: 28px; font-weight: 400; padding-bottom: 20px; text-transform: uppercase;}
+h2 { font-size: 24px; font-weight: 400; } /* add household page */
+
+
+/* header and navigation */
+
+header {
+  display: flex;
+  height: 80px;
+  margin: 10px 40px;
+
+  background-color: #FFF;
+}
+
+.logo-container {
+  flex: 1 1 0;
+  padding: 20px 0;
+  max-width: 100%;
+}
+
+.logo-container img {
+  height: 40px;
+  background-color: transparent;
+}
+
+nav {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+nav ol { flex: 0 1 auto; }
+nav li { display: inline-block; padding: 0 20px; }
+nav li:last-child { padding-right: 0px; }
+
+/* FOOTER */
+footer {
+  margin: 20px 20px 50px 20px;
+  text-align: center;
+}
+
+/* LANDING PAGE */
+#sign-up-banner { 
+  width: 100%; 
+  height: 405; 
+  align-items: center;
+  justify-content: center;
+  background-image: url(../images/sign-up-banner.png);
+}
+
+/* FAQ PAGE */
+#faq p,
+#faq li,
+#household p {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #202020;
+  padding-bottom: .5em;
+}
+
+#faq li {
+  margin-left: 2em;
+  list-style: disc;
+}
+
+/* HOUSEHOLD PAGE */
+#household {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}

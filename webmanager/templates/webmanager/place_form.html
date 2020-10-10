@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/add-household-page.css' %}">
+{% endblock %}
+
+{% block title %}Isolation Web - {% if place %}Edit{% else %}Add{% endif %} Your Household{% endblock %}
+
+{% block content %} 
+<div id="household" class="sml-content">
+  {% if not place %}
+  <h1>Add your household</h1>
+  <p>
+    To add your household to the map, enter your household's name and your zip code in the fields below. Your household name is a unique identifier you can use to recognize your household on the map.
+  </p>
+  <div class="tooltip">
+    <img src="{% static 'images/tooltip.png' %}">
+    <span class="tooltiptext">You may stay anonymous while keeping track of your interactions. Your network can find you with your email or household name.</span>
+    </div>
+  <p>
+    <a href="{% url 'd3web' %}" style="color:#1DC5E9;">
+      <strong>Skip - my household is already on the web</strong>
+    </a>
+  </p>
+  {% elif my_home %}
+  <h1>Edit your household</h1>
+  {% else %}
+  <h1>Your household</h1>
+  {% endif %}
+
+
+  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+  {% if my_home or not place %}
+  <form action="." method="post">
+    <div class="form-group">
+      <input name="id" value="{{place.id}}" type="hidden"/>
+      {% csrf_token %}
+      <div class="flexbox">
+        <div style="flex: 2 1 auto;">
+          <label>
+            Household Name
+            <input type="text" name="name" id="name" value="{{place.name}}" size="35" style="margin-right: 5px;">
+          </label>
+        </div>
+        <div style="flex: 1 1 auto">      
+          <label>
+            Zip Code
+            <input type="zip_code" name="zip_code" id="zip_code" value="{{place.zip_code}}"/>
+          </label>
+        </div>
+      </div>
+      <div class="flexbox">
+        <div style="flex: 1 1 auto;">
+          <label>
+            Number of Household Members
+            <input type="number" name="member_count" id="member_count" value="{{ place.member_count }}">
+          </label>
+        </div>
+      </div>
+    </div>
+  
+    {% if my_home %}
+    <div class="add-members form-group">
+      <h2>Household Members</h2>
+      <!-- https://docs.djangoproject.com/en/3.1/topics/forms/modelforms/#using-the-formset-in-the-template -->
+      {{ personFormSet.management_form }}
+      {% for personForm in personFormSet %}
+        <div class="flexbox">
+        {{ personForm.id }}
+        <div style="flexbox: 1 1 auto; margin-right: 10px;">
+          <label>
+            Email
+            <input type="text" readonly value="{{ personForm.instance.user.email }}"/>
+          </label>
+        </div>
+        {% for field in personForm %}
+          <div style="flexbox: 1 1 auto; margin-right: 10px;">
+            <label>
+              {% if field.label != "Id" %}
+                {% if field.label != "Place" %}
+                  {{ field.label }}
+                {% endif %}
+              {% endif %}
+              {{ field }}
+            </label>
+          </div>
+        {% endfor %}
+        </div>
+      {% endfor %} <br/>
+    </div>
+    {% endif %}
+    <div class="flexbox" style="justify-content: center">
+      <input type="submit" value="Submit" class="lrg-button" style="font-size: 20px" align="center"/>
+    </div>
+  </form>
+
+  {% else %}
+  
+  <div class="flexbox">
+    <div style="flex: 2 1 auto;">
+      <label>
+        Household Name: {{ place.name }}
+      </label>
+    </div>
+    <div style="flex: 1 1 auto">      
+      <label>
+        Number of Household Members: {{ place.member_count }}
+      </label>
+    </div>
+  </div>
+
+  <a class="button" style="margin-top: 25px;" 
+    href="{% url 'person-disconnect' place.id %}">
+      I don't live here anymore
+  </a>
+
+  </div>
+
+  {% endif %}
+</div>
+
+{% endblock %}

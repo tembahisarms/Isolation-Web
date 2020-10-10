@@ -1,0 +1,227 @@
+
+/* map styles */
+#d3-map {
+  height: calc(100% - 100px); 
+}
+
+.node circle {
+    fill: #1DC8E6;
+    /*stroke: #fff;*/
+    /*stroke-width: 2px;*/
+    filter: (drop-shadow: 10px 10px 10px red)
+}
+/*add css for links*/
+
+.link {
+    stroke: #BFC6D9;
+    stroke-width: 2px;
+}
+svg { background-color: #F2F3F7; }
+
+.node text {
+    font: 12px sans-serif;
+    color: black;
+}
+
+.tooltip {
+    position: absolute;
+    padding: 20px;
+    z-index: 10;
+    /*width: 220px;*/
+    /*height: 100px;*/
+    background-color: white;
+    border-radius: 16px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    display: none;
+}
+.tooltip .button {
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 2px;
+}
+
+.tooltip h4 {
+    margin-bottom: 5px;
+}
+.tooltip p {
+    margin-bottom: 2px;
+}
+
+/* side drawer */
+
+.drawer {
+    display: flex;
+    position: absolute;
+
+    /*width: 19.06%;*/
+    width: 250px;
+    height: calc(100% - 100px - 70px); /*100px for header, 70px for padding of this element*/
+
+    padding: 35px 30px;  
+    background-color: #D5D9E1; 
+
+    overflow: scroll;
+
+    flex-direction: column;
+}
+
+/* MAP AND CLUSTER TOGGLE */
+
+/* toggle "channel" */
+label.switch {
+    flex: 0 1 auto;
+
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 5vw;
+    max-width: 300px;
+    max-height: 60px;
+    margin: 0;
+
+    cursor: pointer;
+    background-color: #414A62;
+    -webkit-transition: .4s;
+    transition: .4s;
+    width: 100%;
+    border-radius: 34px;
+}
+
+/* toggle switch */
+#slider-switch {
+    position: absolute;
+    height: 100%;
+    width: 50.3%;
+    left: 0px;
+    bottom: 0px;
+    background: linear-gradient(45deg, #1DC5E9, #1DE0C4);
+    -webkit-transition: .4s;
+    transition: .4s;
+    z-index: 1;
+    border-radius: 34px;
+}
+
+/* hide the checkbox input */
+.switch input {
+    display: none;
+    opacity: 0%;
+    width: 0;
+    height: 0;
+}
+
+/* text for switch */
+.slider-text {
+    flex: 1 1 50%;
+    z-index: 2;
+    position: relative;
+    margin-top: 8.5%;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 100%;
+    font-weight: 400;
+    font-family: "Work Sans", sans-serif;
+    color: #B2B2B2;
+}
+
+/* do the switch */
+input:checked ~ #slider-switch {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+}
+  
+input:checked ~ #cluster  {
+    color: white;
+    font-weight: 600;
+}
+  
+input:not(:checked) ~ #map {
+    color: white;
+    font-weight: 600;
+}
+
+/* SEARCH FORM */
+
+.search-form {
+    flex: 1 1 auto;
+}
+
+input#search {
+    display: inline-block;
+
+    /*width: 254.06px;*/
+    width: 100%;
+    min-height: 40px;
+    height: auto;
+
+    margin: 30px 0 15px 0; 
+    padding: 10px 20px;
+
+    color: #646464;
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    text-align: left;
+
+    border: transparent;
+    border-radius: 10px;
+    background-color: #EEF1F5;
+}
+
+.search-result {
+    display: block;
+
+    width: 100%;
+    min-height: 40px;
+    height: auto;
+
+    margin: 0 0 10px 0;
+
+    color: #646464;
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    text-align: left;
+
+    background-color: #EEF1F5;
+}
+
+.search-result-item {
+    display: inline-block;
+    margin: 15px 20px 15px 40px;
+}
+
+.search-result-item h1 {
+    padding-bottom: 0;
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 16px;
+}
+.search-result-item h2 {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+/* RECENTER BUTTON */
+
+button.cta-button {
+    flex: 0 1 auto;
+    min-height: 40px;
+    height: auto;
+
+    padding: 10px 55px;
+
+    font-size: 22px;
+
+    position: relative;
+
+/*  this all comes from the basic button stylesheet rules
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    color: #FFF;
+    text-transform: uppercase;
+
+    border: transparent;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #1DC5E9, #1DE0C4);*/
+}
+

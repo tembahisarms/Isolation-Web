@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Isolation Web Demo</title>
+  <style type="text/css">
+    body {
+      margin: 1em;
+      font-family: helvetica, sans-serif;
+    }
+
+    .isolation-web {
+      position: absolute;
+      width: calc(100vw - 2em);
+      height: calc(100vh - 2em);
+    }
+
+    .add-action {
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding: 1rem;
+      font-weight: bold;
+      background: #fff;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+  <a href="/add.html" class="add-action">Add me to the web</a>
+  <div id="isolationWeb" class="isolation-web"></div>
+
+  <!-- START SIGMA IMPORTS -->
+  <script src="{% static '/sigma/sigma.core.js' %}"></script>
+  <script src="{% static '/sigma/conrad.js' %}"></script>
+  <script src="{% static '/sigma/utils/sigma.utils.js' %}"></script>
+  <script src="{% static '/sigma/utils/sigma.polyfills.js' %}"></script>
+  <script src="{% static '/sigma/sigma.settings.js' %}"></script>
+  <script src="{% static '/sigma/classes/sigma.classes.dispatcher.js' %}"></script>
+  <script src="{% static '/sigma/classes/sigma.classes.configurable.js' %}"></script>
+  <script src="{% static '/sigma/classes/sigma.classes.graph.js' %}"></script>
+  <script src="{% static '/sigma/classes/sigma.classes.camera.js' %}"></script>
+  <script src="{% static '/sigma/classes/sigma.classes.quad.js' %}"></script>
+  <script src="{% static '/sigma/classes/sigma.classes.edgequad.js' %}"></script>
+  <script src="{% static '/sigma/captors/sigma.captors.mouse.js' %}"></script>
+  <script src="{% static '/sigma/captors/sigma.captors.touch.js' %}"></script>
+  <script src="{% static '/sigma/renderers/sigma.renderers.canvas.js' %}"></script>
+  <script src="{% static '/sigma/renderers/sigma.renderers.webgl.js' %}"></script>
+  <script src="{% static '/sigma/renderers/sigma.renderers.svg.js' %}"></script>
+  <script src="{% static '/sigma/renderers/sigma.renderers.def.js' %}"></script>
+  <script src="{% static '/sigma/renderers/webgl/sigma.webgl.nodes.def.js' %}"></script>
+  <script src="{% static '/sigma/renderers/webgl/sigma.webgl.nodes.fast.js' %}"></script>
+  <script src="{% static '/sigma/renderers/webgl/sigma.webgl.edges.def.js' %}"></script>
+  <script src="{% static '/sigma/renderers/webgl/sigma.webgl.edges.fast.js' %}"></script>
+  <script src="{% static '/sigma/renderers/webgl/sigma.webgl.edges.arrow.js' %}"></script>
+  <script src="{% static '/sigma/renderers/canvas/sigma.canvas.labels.def.js' %}"></script>
+  <script src="{% static '/sigma/renderers/canvas/sigma.canvas.hovers.def.js' %}"></script>
+  <script src="{% static '/sigma/renderers/canvas/sigma.canvas.nodes.def.js' %}"></script>
+  <script src="{% static '/sigma/renderers/canvas/sigma.canvas.edges.def.js' %}"></script>
+  <script src="{% static '/sigma/renderers/canvas/sigma.canvas.edges.curve.js' %}"></script>
+  <script src="{% static '/sigma/renderers/canvas/sigma.canvas.edges.arrow.js' %}"></script>
+  <script src="{% static '/sigma/renderers/canvas/sigma.canvas.edges.curvedArro' %}w.js"></script>
+  <script src="{% static '/sigma/renderers/canvas/sigma.canvas.edgehovers.de' %}f.js"></script>
+  <script src="{% static '/sigma/renderers/canvas/sigma.canvas.edgehovers.curv' %}e.js"></script>
+  <script src="{% static '/sigma/renderers/canvas/sigma.canvas.edgehovers.arro' %}w.js"></script>
+  <script src="{% static '/sigma/renderers/canvas/sigma.canvas.edgehover' %}s.curvedArrow.js"></script>
+  <script src="{% static '/sigma/renderers/canvas/sigma.canvas.extremities.de' %}f.js"></script>
+  <script src="{% static '/sigma/renderers/svg/sigma.svg.utils.js' %}"></script>
+  <script src="{% static '/sigma/renderers/svg/sigma.svg.nodes.def.js' %}"></script>
+  <script src="{% static '/sigma/renderers/svg/sigma.svg.edges.def.js' %}"></script>
+  <script src="{% static '/sigma/renderers/svg/sigma.svg.edges.curve.js' %}"></script>
+  <script src="{% static '/sigma/renderers/svg/sigma.svg.labels.def.js' %}"></script>
+  <script src="{% static '/sigma/renderers/svg/sigma.svg.hovers.def.js' %}"></script>
+  <script src="{% static '/sigma/middlewares/sigma.middlewares.rescale.js' %}"></script>
+  <script src="{% static '/sigma/middlewares/sigma.middlewares.copy.js' %}"></script>
+  <script src="{% static '/sigma/misc/sigma.misc.animation.js' %}"></script>
+  <script src="{% static '/sigma/misc/sigma.misc.bindEvents.js' %}"></script>
+  <script src="{% static '/sigma/misc/sigma.misc.bindDOMEvents.js' %}"></script>
+  <script src="{% static '/sigma/misc/sigma.misc.drawHovers.js' %}"></script>
+  <script src="{% static '/plugins/sigma.plugins.animate/sigma.plugins.animat' %}e.js"></script>
+  <script src="{% static '/plugins/sigma.layout.noverlap/sigma.layout.noverla' %}p.js"></script>
+  <!-- END SIGMA IMPORTS -->
+  <script>
+    var request = new XMLHttpRequest();
+    request.open('GET', '/data', true);
+    request.onreadystatechange = function () {
+      if (request.readyState != 4 || request.status != 200) {
+        return;
+      }
+
+      var s = new sigma({
+        graph: JSON.parse(request.responseText),
+        container: 'isolationWeb'
+      });
+
+      // Configure the noverlap layout:
+      var noverlapListener = s.configNoverlap({
+        nodeMargin: 0.1,
+        scaleNodes: 1.05,
+        gridSize: 75,
+        easing: 'quadraticInOut', // animation transition function
+        duration: 10000   // animation duration. Long here for the purposes of this example only
+      });
+      // Bind the events:
+
+      // Start the layout:
+      s.startNoverlap();
+    };
+    request.send();
+  </script>
+</body>
+</html>

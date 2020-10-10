@@ -1,0 +1,33 @@
+{% load static %}
+
+<! DOCTYPE html>
+<html>
+  <head>
+    <link href="" rel="stylesheet">
+    {% block stylesheet %}
+      <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    {% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <div class="flexbox" style="min-height: 100%">
+      <div class="col1of2 image-column">
+        <a href="/"><img class="logo" src= "{% static 'images/logo.png' %}" alt="Logo for Isolation Web"></a>
+        <!-- <img src="{% static 'images/node-left-panel.png' %}" alt="Node Illustration"> -->
+      </div>
+      <div class="col1of2">
+        <div class="form-container">
+          {% block form %}
+
+          {% endblock %}
+        </div>
+        <footer>
+          Isolation Web is a project of Definitely Real Media Company<br/>
+          <a href="{% url 'terms' %}">Terms of Service</a> | <a href="{% url 'privacy' %}">Privacy Policy</a> | <a href="mailto:info+isolation.web@definitelyreal.com">Contact Us</a>
+        </footer>
+      </div>
+    </div>
+  </body>
+
+</html>

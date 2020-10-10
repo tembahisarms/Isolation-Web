@@ -1,0 +1,27 @@
+/* d3 map read only view */
+
+#d3-map {
+  height: 471px; 
+  margin: 0 auto;
+  order: none; 
+  position: relative;
+}
+
+.toggle-controls { 
+  position: absolute; 
+  top: 15px;
+  left: 15px;
+  background-color: #414A62; 
+  border-radius: 25px;
+}
+
+.toggle-controls button {
+  padding: 8px 12px;
+  border-radius: 25px;
+}
+
+.inactive-control {
+  background: #414A62;
+}
+
+/* body */
