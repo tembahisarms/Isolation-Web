@@ -1,5 +1,6 @@
 .DS_Store
 isolationweb/static_root/
+*/__pycache__/*
 
 # Logs
 logs
