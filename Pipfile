@@ -1,0 +1,26 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+django = "*"
+psycopg2-binary = "*"
+uszipcode = "*"
+gunicorn = "*"
+whitenoise = "*"
+
+[requires]
+python_version = "3"
+
+[scripts]
+makemigrations = "python manage.py makemigrations"
+migrate = "python manage.py migrate"
+shell = "python manage.py shell"
+start = "python manage.py runserver"
+server = "python manage.py runserver"
+superuser = "python manage.py createsuperuser"
+cs = "python manage.py collectstatic"
+dumpdata = "python manage.py dumpdata"
